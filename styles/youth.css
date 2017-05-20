@@ -1,0 +1,58 @@
+html, body {
+    background-color:black;
+    color:white;
+    height: 100%;
+    margin: 0px;
+}
+
+div {
+  padding:2px;
+}
+
+img {
+    margin: 20px;
+}
+
+.main-container {
+    border: 5px solid black;
+    height: 98%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.song-container {
+    border: 5px solid black;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.controls-container {
+    border-top: 2px solid grey;
+    display: flex;
+    height: 100px;
+}
+
+.tools-container {
+  border: 5px solid black;
+  flex-grow: 1;
+  display:flex;
+  align-items: center;
+}
+
+.nav-container {
+    border: 5px solid black;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-nav {
+  text-align:center; 
+  border:none; 
+  background-color:white; 
+  font-family:Arial, Helvetica, sans-serif; 
+  font-size:29px;
+  width:100%;
+}
