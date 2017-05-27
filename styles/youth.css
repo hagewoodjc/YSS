@@ -5,16 +5,15 @@ html, body {
     margin: 0px;
 }
 
-div {
-  padding:2px;
-}
-
 img {
     margin: 20px;
 }
 
+div {
+    padding: 5px;
+}
+
 .main-container {
-    border: 5px solid black;
     height: 98%;
     display: flex;
     align-content: center;
@@ -22,26 +21,25 @@ img {
 }
 
 .song-container {
-    border: 5px solid black;
     flex: 1;
     overflow-y: scroll;
+    width: 100%;
+    border: none;
 }
 
 .controls-container {
     border-top: 2px solid grey;
     display: flex;
-    height: 100px;
+    height: 5em;
 }
 
 .tools-container {
-  border: 5px solid black;
   flex-grow: 1;
   display:flex;
   align-items: center;
 }
 
 .nav-container {
-    border: 5px solid black;
     width: 100px;
     display: flex;
     align-items: center;
@@ -55,4 +53,68 @@ img {
   font-family:Arial, Helvetica, sans-serif; 
   font-size:29px;
   width:100%;
+}
+
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchControls-container {
+    /*flex: 1;*/
+    height: 50px;
+    margin: 5px;
+}
+
+.searchResults-container {
+    flex: 1;    
+}
+
+.songAccordion-container {
+    height: 400px;
+    flex-grow: 1;
+    overflow-y:scroll;
+    width: 100%;
+}
+
+.searchBox {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    width: 20em;
+    margin-right: 0.5em;
+}
+
+form {
+    display: flex;
+    flex-grow: 1;
+}
+
+fieldset {
+    display: flex;
+    flex-grow: 1;
+}
+
+
+fieldset div{
+    display: flex;
+}
+
+input {
+    flex-grow: 1;
+}
+
+.ui-accordion-content {
+    height: 10em;
+    margin: 2px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.song-result {
+    flex: 1;
+    width: 100%;
 }

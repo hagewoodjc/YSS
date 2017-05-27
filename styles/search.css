@@ -1,0 +1,31 @@
+html, body {
+    color: white;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 600px;
+}
+
+.searchControls-Container {
+    flex: 1;
+}
+
+.searchResults-container {
+    display: flex; 
+    overflow-y: scroll;
+}
+
+.searchBox {
+    border: none;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    width: 70%;
+}
+
+.searchButton {
+    margin-left: 10px;
+}

@@ -4,17 +4,17 @@
     <head>        
         <meta charset="utf-8" />
         <title>2 - Crieve Hall Church of Christ Youth Group | Song System</title>
-        <link rel="stylesheet" href="styles/youth.css" />    
+        <link rel="stylesheet" href="styles/youth.css" />
+        <link rel="stylesheet" href="scripts/jquery-ui-1.12.1/jquery-ui.css">
     </head>
     <body>
-        <section id="main" class="main-container">
+        <div id="main" class="main-container">
             <iframe id="song" class="song-container" src="start.html"></iframe>
             <div id="controls" class="controls-container">
                 <div id="tools" class="tools-container">
-                    <img src="images/icons/search.png" />
-                    <img src="images/icons/search.png" />
-                    <img src="images/icons/search.png" />
-                    <img src="images/icons/search.png" />
+                    <a id="searchLink" href="javascript:void(0);">
+                        <img src="images/icons/search.png" />
+                    </a>                    
                 </div>
                 <div id="nav" class="nav-container">
                     <form id="songInputForm" >
@@ -23,10 +23,76 @@
                 
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div id="search" class="search-container">
+            <div id="searchControls" class="searchControls-container">  
+                <form id="searchForm">
+                    <fieldset>
+                        <div>
+                            <input type="text" name="searchTermsInput" placeholder="Enter song title or containing text..." class="searchBox" autocomplete="off" />
+                            <button type="submit">Search</button>                                    
+                        </div>
+                    </fieldset>
+                </form>                
+            </div>
+            <!--<div id="searchResults" class="searchResults-container">-->
+                <div id="songAccordion" class="songAccordion-container">
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>                    
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                    <h3>Song Title1</h3>
+                    <div>
+                        <iframe class="song-result" src="songs/1.htm"></iframe>
+                    </div>
+                </div>
+            <!--</div>-->
+        </div>
 
         <script src="scripts/jquery-3.2.1.js"></script>
-        <script type="text/javascript" src="scripts/jquery.fullscreen.js"></script>
+        <script src="scripts/jquery-ui-1.12.1/jquery-ui.js"></script>
+        <!--<script type="text/javascript" src="scripts/jquery.fullscreen.js"></script>-->
         <script type="text/javascript" src="scripts/index.js"></script>        
         <script type="text/javascript" src="scripts/start.js"></script>
     </body>
