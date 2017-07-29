@@ -1,4 +1,11 @@
 $(function () {
+	
+	var songQueue = [];
+	var queueCounter = 0;
+	
+	$( "#items" ).sortable();
+    $( "#items" ).disableSelection();
+
     $('#songInputForm').submit(function (event) {
         try {
             var song = $("input[name='songNumber']").val();
@@ -16,26 +23,92 @@ $(function () {
         minHeight: 550,
         minWidth: 550,
         title: 'Song Search',
+        open: function (event, ui) {
+            resolveSearchVisibility();
+        }
     });
+
+    $('#queue').dialog({
+		autoOpen: false,
+        modal: true,
+        resize: 'auto',
+        minHeight: 300,
+        minWidth: 300,
+        title: 'Song Queue',
+		open: function (event, ui) {
+        },
+		close: function(event, ui) {			
+			var nav = $("input[name='songNumber']");
+			songQueue = $('#items').sortable('toArray');
+			if(songQueue.length > 0) {	
+				var song = songQueue[queueCounter];
+				nav.val(song);
+				loadSong(song);				
+			} else {
+				loadSong('b');
+				$("input[name='songNumber']").val("");
+			}
+		}
+	});
 
     $('#searchLink').click(function () {
         $('#search').dialog('open');
-    }); 
+    });
+	
+	$('#queueLink').click(function () {
+		$('#queue').dialog('open');
+	});	
 
+	$('#addToQueue').click(function () {
+		var song = $("input[name='queueNumber']").val();
+		var items = $('#items');
+		items.append('<li id=' + song + ' class="ui-state-default">' + song + '</li>');
+		items.sortable('refresh');
+		$("input[name='queueNumber']").val("");
+	});
+	
+	$('#clearQueue').click(function () {
+		songQueue = [];
+		$('#items').html("");
+		$("input[name='queueNumber']").val("");
+	});
+	
+	$('#nextButton').click(function () {
+		var nav = $("input[name='songNumber']");
+		if(songQueue.length > 0) {	
+			if (queueCounter < songQueue.length - 1)
+					queueCounter++;
+			var song = songQueue[queueCounter];
+			nav.val(song);
+			loadSong(song);							
+		}
+	});
+	
+	$('#backButton').click(function () {
+		var nav = $("input[name='songNumber']");
+		if (queueCounter != 0)
+				queueCounter--;	
+		if(songQueue.length > 0) {	
+			var song = songQueue[queueCounter];
+			nav.val(song);
+			loadSong(song);						
+		}
+	});
+	
     $('#searchForm').submit(function (event) {
         try {
             event.preventDefault();
 
             var items = [];
             for (var i = 1; i < 3; i++) {
-                items.push(searchSongs(i));                
-            };  
+                items.push(searchSongs(i));
+            };
             $('#songAccordion').append(items);
             $('#songAccordion').accordion('refresh');
 
         } catch (err) {
             alert(err);
-        }        
+        }
     });
 
     $('#songAccordion').accordion({
@@ -43,6 +116,21 @@ $(function () {
         collapsible: true,
         heightStyle: "content"
     });
+
+    $('#songFiles').change(function (event) {
+        event.preventDefault();
+        resolveSearchVisibility();
+    });
+
+    function resolveSearchVisibility(target) {
+        if ($('#songFiles').files.length > 0) {
+            $('#chooseSongs').hide();
+            $('#searchSongs').show();
+        } else {
+            $('#chooseSongs').show();
+            $('#searchSongs').hide();
+        }
+    };
 
     function loadSong(songNumber) {
         var path = 'songs/' + songNumber + '.htm';
@@ -54,41 +142,6 @@ $(function () {
 
         var reader = new FileReader();
         reader.readAsText(url);
-        
-        //if (window.XMLHttpRequest) {
-        //    var oReq = new XMLHttpRequest(); 
-        //    oReq.open('get', url, false);
-        //    oReq.onload = function () {
-        //        var dom = new ActiveXObject('Microsoft.XMLDOM'),
-        //            HTML = $.parseHTML(oReq.responseText);
-
-        //        dom.async = false;
-
-        //        if (HTML == null || typeof (HTML) == 'undefined') {
-        //            HTML = $.parseHTML(data.firstChild.textContent);
-        //        }
-
-        //        successCallback(HTML); // internal function
-        //    };
-
-        //    oReq.onerror = function () {
-        //        _result = false;
-        //    };
-
-        //    oReq.send();
-        //} else {
-        //    $.ajax({
-        //        url: "b.html",
-        //        crossDomain: true,
-        //        dataType: "text/plain",
-        //        success: function (data) {
-        //            var markup = data;
-        //            return markup;
-        //        },
-        //        error: function (err) {
-        //        }
-        //    });
-        //}
         
         return item;
     };

@@ -11,33 +11,47 @@
         <div id="main" class="main-container">
             <iframe id="song" class="song-container" src="start.html"></iframe>
             <div id="controls" class="controls-container">
-                <div id="tools" class="tools-container">
-                    <a id="searchLink" href="javascript:void(0);">
-                        <img src="images/icons/search.png" />
-                    </a>                    
+                <!-- <div class="tools-container"> -->
+                    <!-- <a id="searchLink" href="javascript:void(0);"> -->
+                        <!-- <img src="images/icons/search.png" /> -->
+                    <!-- </a>                     -->
+                <!-- </div> -->
+                <div class="tools-container">
+                    <a id="queueLink" href="javascript:void(0);">
+                        <img src="images/icons/list-2-48.png" />
+                    </a>
                 </div>
                 <div id="nav" class="nav-container">
                     <form id="songInputForm" >
                         <input type="text" name="songNumber" class="song-nav" maxlength="3" autocomplete="off" />
                     </form>
-                
+					<div class="queueButtons">
+						<button id="backButton">Back</button>
+						<span id="nextSong"></span>
+						<button id="nextButton">Next</button>					
+					</div>					
                 </div>
             </div>
         </div>
 
         <div id="search" class="search-container">
             <div id="searchControls" class="searchControls-container">  
-                <form id="searchForm">
+                <form id="searchForm">    
                     <fieldset>
-                        <div>
-                            <input type="text" name="searchTermsInput" placeholder="Enter song title or containing text..." class="searchBox" autocomplete="off" />
-                            <button type="submit">Search</button>                                    
+                        <div id="chooseSongs">
+                            <label for="songFiles" class="ui-button ui-corner-all ui-widget">Select all song files to search</label>
+                            <input type="file" id="songFiles" class="songFiles" multiple accept=".htm, .html" />
                         </div>
+                        <div id="searchSongs">
+                            <input type="text" name="searchTermsInput" placeholder="Enter song title or containing text..." class="searchBox" autocomplete="off" />
+                            <button type="submit">Search</button>
+                        </div>
+
                     </fieldset>
                 </form>                
             </div>
-            <!--<div id="searchResults" class="searchResults-container">-->
-                <div id="songAccordion" class="songAccordion-container">
+
+                <!--<div id="songAccordion" class="songAccordion-container">
                     <h3>Song Title1</h3>
                     <div>
                         <iframe class="song-result" src="songs/1.htm"></iframe>
@@ -86,14 +100,25 @@
                     <div>
                         <iframe class="song-result" src="songs/1.htm"></iframe>
                     </div>
-                </div>
-            <!--</div>-->
+                </div>-->
         </div>
 
-        <script src="scripts/jquery-3.2.1.js"></script>
-        <script src="scripts/jquery-ui-1.12.1/jquery-ui.js"></script>
-        <!--<script type="text/javascript" src="scripts/jquery.fullscreen.js"></script>-->
-        <script type="text/javascript" src="scripts/index.js"></script>        
-        <script type="text/javascript" src="scripts/start.js"></script>
-    </body>
+        <div id="queue" class="search-container">
+            <div id="queueControls" class="searchControls-container">
+                <input type="text" name="queueNumber" maxlength="3" autocomplete="off" />
+				<button id="addToQueue">+</button>
+				<button id="clearQueue">Clear</button>				
+            </div>
+			<div id="queueItems" class="queueItems-container">
+				<ul id="items">
+				</ul>
+			</div>			
+        </div>
+
+            <script src="scripts/jquery-3.2.1.js"></script>
+            <script src="scripts/jquery-ui-1.12.1/jquery-ui.js"></script>
+            <!--<script type="text/javascript" src="scripts/jquery.fullscreen.js"></script>-->
+            <script type="text/javascript" src="scripts/index.js"></script>
+            <script type="text/javascript" src="scripts/start.js"></script>
+</body>
 </html>
